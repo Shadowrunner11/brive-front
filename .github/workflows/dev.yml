@@ -1,0 +1,44 @@
+name: DEPLOY DEV
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - "dev"
+    paths-ignore:
+      - "**.mdx"
+      - "**.md"
+      - "**.stories.*"
+      - ".storybook/"
+
+jobs:
+  deploy-dev:
+    environment: dev
+    env:
+      VITE_API_URL: ${{ vars.API_URL }}
+      BASE_URL: ${{ vars.BASE_URL }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
+
+      - run: npm install -g yarn
+
+      - name: Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+          touch dist/.nojekyll
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+
+  

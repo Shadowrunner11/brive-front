@@ -1,16 +1,16 @@
 import { useInfiniteQuery, } from "@tanstack/react-query";
 import { GridItemProps, VirtuosoGrid } from "react-virtuoso";
-import { client } from "../../lib/graphql.service";
-import { GET_PAGINATED_CHARACTERS } from "../../graphql/characters.gql";
 import { PropsWithChildren, useCallback, useEffect, useMemo, useState } from "react";
-import { GetPaginatedCharactersQuery, Character } from "../../gql/graphql";
+import { Character } from "../../gql/graphql";
 import { Card } from '../../components/Card';
+
 
 
 import styles from './styles.module.css'
 
 import styled from '@emotion/styled'
 import { ButtonMore } from "../ButtonMore";
+import { grahqlClient as graphqlClient } from "../../lib/modules";
 
 const ItemContentCard = (index: number, { image, name, species }: Character)=>(
   <Card
@@ -41,15 +41,14 @@ const List: any = styled.div`
 `
 
 export const RickAndMortyList = ()=>{
+  // TODO: does this really need to be a state? could be a ref
   const [page, setPage] = useState(1)
 
   // TODO: check if IoC is possible
   const { data, fetchNextPage } = useInfiniteQuery(
     ['rickAndMorty'], 
-    async ({ pageParam })=> await client.request<GetPaginatedCharactersQuery>(GET_PAGINATED_CHARACTERS, {
-      page: pageParam ?? 1
-    }),)
-  
+    async ({ pageParam })=> await graphqlClient.getPaginatedCharacters(pageParam)
+  )
 
   // TODO: optimize with pseudo useSingal and memoized pattern
   const flattedData = useMemo(()=> data?.pages.flatMap(({ characters })=> characters?.results ?? []), [data?.pages])

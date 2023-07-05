@@ -3,4 +3,12 @@
   background-image: url('../../assets/rickAndMortyWp.jpg');
   background-size: cover;
   margin-bottom: 4rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.hero__text{
+  width: 90vw;
+  background-color: rgba(100, 100, 100, 0.5);
 }

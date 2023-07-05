@@ -9,10 +9,9 @@
 }
 
 .card_themePrimary{
-  background-color: #252525;
+  background-color: #606060;
   border-radius: 1rem;
   color: aliceblue;
-  border: white solid 0.1rem;
 }
 
 .card__cardAction{

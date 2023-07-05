@@ -12,3 +12,11 @@ export const getEnvOrThrow = (envName: EnvKeys): string=>{
 
   return value.toString();
 }
+
+
+export const getOrThrow = <T = unknown>(data?: T): T=> {
+  if(!data)
+    throw new Error('Should not be null');
+
+  return data;
+}
