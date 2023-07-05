@@ -32,8 +32,6 @@ jobs:
         with:
           version: 8
 
-      - run: npm install -g yarn
-
       - name: Build
         run: |
           pnpm install
