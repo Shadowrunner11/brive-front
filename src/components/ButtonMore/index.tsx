@@ -11,5 +11,7 @@ export const ButtonMore = () => {
     event.preventDefault()
   }, [])
 
-  return <button onClick={_handleClick} className={buttonMore()}>More</button>
+  return <button onClick={_handleClick} className={buttonMore()}>
+    More
+  </button>
 }
