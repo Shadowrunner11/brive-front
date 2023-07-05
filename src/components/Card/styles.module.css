@@ -1,0 +1,22 @@
+.card{
+  min-height: 30rem;
+  min-width: 6rem;
+  max-width: 18rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card_themePrimary{
+  background-color: #252525;
+  border-radius: 1rem;
+  color: aliceblue;
+  border: white solid 0.1rem;
+}
+
+.card__cardAction{
+  width: 100%;
+  margin-top: auto;
+}
+

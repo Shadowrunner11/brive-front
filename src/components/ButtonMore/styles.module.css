@@ -1,0 +1,13 @@
+/* TODO: Separate structure form theme to use CVA */
+
+.button{
+  background-color: cadetblue;
+  display: block;
+  width: 100%;
+  border-radius: .5rem .5rem 1rem 1rem;
+}
+
+.button:hover{
+  background-color: aquamarine;
+  cursor: pointer;
+}

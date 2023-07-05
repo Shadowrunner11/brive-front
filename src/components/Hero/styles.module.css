@@ -1,0 +1,6 @@
+.hero{
+  height: 80vh;
+  background-image: url('../../assets/rickAndMortyWp.jpg');
+  background-size: cover;
+  margin-bottom: 4rem;
+}
