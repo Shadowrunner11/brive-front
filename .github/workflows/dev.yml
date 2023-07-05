@@ -23,17 +23,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
+          cache: pnpm
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
       - run: npm install -g yarn
 
       - name: Build
         run: |
-          yarn install --frozen-lockfile
-          yarn build
+          pnpm install
+          pnpm build
           touch dist/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
