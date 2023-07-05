@@ -1,3 +1,6 @@
+import blur from '../../assets/blur.jpeg'
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import styles from './styles.module.css'
@@ -30,7 +33,7 @@ export const Card = ({ cardMediaURL, cardAction, cardContent, cardTop, intent = 
     <div className={styles.card__media}>
       {
         cardMediaURL && 
-          <img src={cardMediaURL} alt='card media'/>
+          <LazyLoadImage placeholderSrc={blur} width='18rem' height={300} src={cardMediaURL} alt='card media'/>
       }
     </div>
 
