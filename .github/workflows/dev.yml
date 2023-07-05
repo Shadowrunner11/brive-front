@@ -23,20 +23,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: pnpm
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
+    
       - name: Build
         run: |
           pnpm install
           pnpm build
           touch dist/.nojekyll
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
