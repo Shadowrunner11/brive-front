@@ -1,17 +1,18 @@
+import { MouseEvent, useCallback } from "react";
+import { cva } from "class-variance-authority";
 
-import { MouseEvent, useCallback } from 'react'
-import { cva } from 'class-variance-authority'
+import styles from "./styles.module.css";
 
-import styles from './styles.module.css'
-
-const buttonMore = cva(styles.button)
+const buttonMore = cva(styles.button);
 
 export const ButtonMore = () => {
-  const _handleClick = useCallback((event: MouseEvent<HTMLButtonElement>)=>{
-    event.preventDefault()
-  }, [])
+  const _handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  }, []);
 
-  return <button onClick={_handleClick} className={buttonMore()}>
-    More
-  </button>
-}
+  return (
+    <button onClick={_handleClick} className={buttonMore()}>
+      More
+    </button>
+  );
+};
