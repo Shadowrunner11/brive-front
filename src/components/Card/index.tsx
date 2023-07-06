@@ -30,8 +30,8 @@ export const Card = ({
   <div className={card({ intent })}>
     {cardTop && <div>{cardTop}</div>}
 
-    <div className={styles.card__media}>
-      {cardMediaURL && (
+    {cardMediaURL && (
+      <div className={styles.card__media}>
         <LazyLoadImage
           placeholderSrc={blur}
           width="18rem"
@@ -39,8 +39,8 @@ export const Card = ({
           src={cardMediaURL}
           alt="card media"
         />
-      )}
-    </div>
+      </div>
+    )}
 
     {cardContent}
 

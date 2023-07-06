@@ -1,6 +1,5 @@
 /// <reference types="vite/client" />
 
-
 type RemoveIndex<T> = {
   [K in keyof T as string extends K
     ? never
@@ -15,9 +14,10 @@ type EnvKeys = keyof Envs;
 
 type CustomEnvKeys = keyof Omit<
   Envs,
-  'BASE_URL' | 'DEV' | 'PROD' | 'MODE' | 'SSR'
+  "BASE_URL" | "DEV" | "PROD" | "MODE" | "SSR"
 >;
 
 declare interface ImportMetaEnv {
   VITE_API_URL?: string;
+  VITE_IS_HASH?: string;
 }
