@@ -19,6 +19,7 @@ jobs:
     env:
       VITE_API_URL: ${{ vars.API_URL }}
       BASE_URL: ${{ vars.BASE_URL }}
+      VITE_IS_HASH: ${{ vars.VITE_IS_HASH }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

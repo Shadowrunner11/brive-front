@@ -1,21 +1,22 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider } from "react-auth-kit";
+import { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
+import { Router } from "./routes";
 
-import { Nav } from './components/Nav'
-import { Hero } from './components/Hero'
-import { RickAndMortyList } from './components/RickAndMortyList'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+const queryClient = new QueryClient();
 
-const queryClient = new QueryClient()
-
+// TODO: create loading
 function App() {
   return (
-    <>
-     <QueryClientProvider client={queryClient}>
-      <Nav />
-      <Hero />
-      <RickAndMortyList />
-     </QueryClientProvider>
-    </>
-  )
+    <QueryClientProvider client={queryClient}>
+      <Suspense fallback={<div>Cargando...</div>}>
+        <AuthProvider authType="localstorage" authName="_auth">
+          <RouterProvider router={Router} />
+        </AuthProvider>
+      </Suspense>
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
